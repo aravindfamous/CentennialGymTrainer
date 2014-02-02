@@ -1,5 +1,5 @@
-CentennialGymTrainer
-====================
+Centennial Gym Trainer
+======================
 
 Welcome to Centennial GYM Trainer - Android App, our COMP313 project. 
 This project brought to you by:
