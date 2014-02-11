@@ -15,6 +15,14 @@
     <string name="logo1">Logo</string>
     <string name="txtuserName">User Name:</string>
     <string name="txtuserPass">Password:</string>
+    <string name="txtfgpass">Forget Password</string>
    
-
+    <!-- Login Page -->
+    
+    <string name="btnRSubmit">Submit</string>
+    <string name="txtRole">Role:</string>
+    <string name="txtEmail">Email ID:</string>
+    <string name="txtfn">First Name:</string>
+    <string name="txtln">Last Name:</string>
+    
 </resources>

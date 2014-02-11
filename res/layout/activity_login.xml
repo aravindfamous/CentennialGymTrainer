@@ -81,5 +81,14 @@
         android:layout_toRightOf="@+id/btnRegister"
         android:textSize="18sp"
         android:text="@string/btnLogin" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/imageView1"
+        android:layout_below="@+id/btnRegister"
+        android:layout_marginTop="30dp"
+        android:text="@string/txtfgpass" />
    
 </RelativeLayout>
