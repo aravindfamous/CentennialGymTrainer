@@ -1,0 +1,4 @@
+INDEX VERSION 1.126+C:\Users\Romaine\Documents\GitHub\CentennialGymTrainer\.metadata\.plugins\org.eclipse.jdt.core
+3273179648.index
+2752991633.index
+2352306861.index

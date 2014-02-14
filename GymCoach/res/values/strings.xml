@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GymCoach</string>
+    <string name="action_settings">Settings</string>
+    <string name="logout">Log Out</string>
+    <string name="welcome">Welcome!</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+	<string name="confirmpassword">Confirm Password</string>
+    <string name="logo">Centennial Trainer</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="linktoregister">I don\'t have account. Register Me!</string>
+    <string name="linktologin">Already have an account? go Login</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
+    <string name="province">Province</string>
+    <string name="postalcode">Postal Code</string>
+    <string name="usertype">User Type</string>
+    <string name="email">Email</string>
+    <string name="dob">Birthday</string>
+    <string name="registration">Registration</string>
+    <string name="dateformat">yyyy-mm-dd</string>
+
+</resources>
