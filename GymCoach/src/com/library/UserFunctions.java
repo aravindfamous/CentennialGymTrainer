@@ -1,53 +1,50 @@
 package com.library;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
  
 public class UserFunctions {
-     
     private JSONParser jsonParser;
      
-    // Testing in localhost using wamp or xampp 
-    private static String loginURL = "http://wyncoding.t15.org/gymcoach/index.php";
-    private static String registerURL = "http://wyncoding.t15.org/gymcoach/index.php";
+    private static String URL = "http://wyncoding.t15.org/gymcoach/index.php";
      
     private static String login_tag = "login";
     private static String register_tag = "register";
+    private static String generate_tag = "generate";
+    
+    //JSON Response node names for exercise
+    private static String KEY_BODYPART = "body_part";
+    private static String KEY_EXERCISENAME = "exercise_name";
+    private static String KEY_NUMOFREPS = "num_of_reps";
+    private static String KEY_NUMOFSETS = "num_of_sets";
+    private static String KEY_DAY = "day";
+    private static String KEY_WORKOUTVIDEO = "workout_video";
      
-    // constructor
     public UserFunctions(){
         jsonParser = new JSONParser();
     }
      
-    /**
-     * function make Login Request
-     * @param email
-     * @param password
-     * */
     public JSONObject loginUser(String username, String password){
         // Building Parameters
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("tag", login_tag));
         params.add(new BasicNameValuePair("username", username));
         params.add(new BasicNameValuePair("password", password));
-        JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
+        JSONObject json = jsonParser.getJSONFromUrl(URL, params);
         // return json
         // Log.e("JSON", json.toString());
         return json;
     }
-     
-    /**
-     * function make Login Request
-     * @param name
-     * @param email
-     * @param password
-     * */
+    
     public JSONObject registerUser(String firstname, String lastname, String address,
     		String city, String province, String postalcode, String dob, String usertype, String username, String password, String email){
         // Building Parameters
@@ -65,15 +62,30 @@ public class UserFunctions {
         params.add(new BasicNameValuePair("password", password));
         params.add(new BasicNameValuePair("email", email));
 
-        JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);
-				
-		// return json
-        return json;
+        return jsonParser.getJSONFromUrl(URL, params);
+    }
+    
+    public JSONObject generateAPlan(Context context, int height, double weight, int age, String workoutType, String gender, double bmi, double bmr) {
+    	final List<NameValuePair> params = new ArrayList<NameValuePair>();	
+    	String username = getUsername(context);
+    	
+    	params.add(new BasicNameValuePair("tag", generate_tag));
+    	params.add(new BasicNameValuePair("username", username));
+    	params.add(new BasicNameValuePair("height", "" + height));
+    	params.add(new BasicNameValuePair("weight", "" + weight));
+    	params.add(new BasicNameValuePair("age", "" + age));
+    	params.add(new BasicNameValuePair("workouttype", workoutType));
+    	params.add(new BasicNameValuePair("gender", gender));
+    	params.add(new BasicNameValuePair("bmi", "" + bmi));
+    	params.add(new BasicNameValuePair("bmr", "" + bmr));
+    	
+    	return jsonParser.getJSONFromUrl(URL, params);
     }
      
-    /**
-     * Function get Login status
-     * */
+    /*
+     * DATABASE FUNCTIONS!!!!
+     */
+
     public boolean isUserLoggedIn(Context context){
         DBHandler db = new DBHandler(context);
         int count = db.getRowCount();
@@ -84,14 +96,74 @@ public class UserFunctions {
         return false;
     }
      
-    /**
-     * Function to logout user
-     * Reset Database
-     * */
     public boolean logoutUser(Context context){
         DBHandler db = new DBHandler(context);
         db.resetTables();
         return true;
     }
-     
+    
+    public boolean hasPlan(Context context) {
+    	DBHandler db = new DBHandler(context);
+    	HashMap<String,String> user = db.getUserDetails();
+    	Boolean value = user.get("planID").equals("0");
+    	if(!value) {
+    		return true;
+    	}
+    	return false;
+    }
+    
+    public boolean isVerified(Context context) {
+    	DBHandler db = new DBHandler(context);
+    	HashMap<String,String> user = db.getUserDetails();
+    	Boolean value = user.get("verified").equals("1");
+    	if(value) {
+    		return true;
+    	}
+    	return false;
+    }
+    
+    public String getName(Context context) {
+    	DBHandler db = new DBHandler(context);
+    	HashMap<String,String> user = db.getUserDetails();
+    	return user.get("firstname") + " " + user.get("lastname");
+    }
+    
+    public String getUsername(Context context) {
+    	DBHandler db = new DBHandler(context);
+    	HashMap<String,String> user = db.getUserDetails();
+    	return user.get("username");
+    }    
+    
+    public int getCurrentDay(Context context) {
+    	DBHandler db = new DBHandler(context);
+    	HashMap<String,String> user = db.getUserDetails();
+    	return Integer.parseInt(user.get("currentday"));
+    }
+    
+    public ArrayList<ExercisePlan> getExercisePlanByDay(Context context, int day) {
+    	DBHandler db = new DBHandler(context);
+    	return db.getExercisePlanByDay(day);
+    }
+    
+    public void updateCurrentDay(Context context, int day) {
+    	DBHandler db = new DBHandler(context);
+    	db.updateCurrentDay(day);
+    }
+    
+    public void addPlan(Context context, JSONArray array) {
+    	DBHandler db = new DBHandler(context);
+    	for (int i=0; i < array.length(); i++)
+        {
+            try {
+                JSONObject json_exercise = array.getJSONObject(i);
+                int numOfReps = Integer.parseInt(json_exercise.getString(KEY_NUMOFREPS));
+                int numOfSets = Integer.parseInt(json_exercise.getString(KEY_NUMOFSETS));
+                int day = Integer.parseInt(json_exercise.getString(KEY_DAY));
+                db.addExercisePlan(json_exercise.getString(KEY_BODYPART), json_exercise.getString(KEY_EXERCISENAME), 
+                		numOfReps, numOfSets, day, json_exercise.getString(KEY_WORKOUTVIDEO));
+            } catch (JSONException e) {
+                // Oops
+            }
+        }
+    }
 }
