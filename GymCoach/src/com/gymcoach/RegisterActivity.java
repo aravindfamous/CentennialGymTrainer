@@ -1,5 +1,7 @@
 package com.gymcoach;
 
+import java.util.regex.Pattern;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -7,13 +9,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.library.DBHandler;
 import com.library.UserFunctions;
  
 public class RegisterActivity extends Activity {
@@ -35,24 +38,31 @@ public class RegisterActivity extends Activity {
     EditText etEmail;
     
     TextView tvRegisterError;
+    
+    public final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+            "\\@" +
+            "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+            "(" +
+            "\\." +
+            "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+            ")+"
+        );
      
     // JSON Response node names
     private static String KEY_SUCCESS = "success";
-    //private static String KEY_ERROR = "error";
     private static String KEY_ERROR_MSG = "error_msg";
-    private static String KEY_FIRSTNAME = "firstname";
-    private static String KEY_LASTNAME = "lastname";
-    private static String KEY_USERNAME = "username";
-    private static String KEY_EMAIL = "email";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+    	this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
+        
         spinnerArray = new String[3];
         spinnerArray[0] = "Student";
         spinnerArray[1] = "Guest";
-        spinnerArray[2] = "Resident";
+        spinnerArray[2] = "Faculty";
         spinner = (Spinner) findViewById(R.id.spinnerUserType);
         
         @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -77,8 +87,10 @@ public class RegisterActivity extends Activity {
         tvRegisterError = (TextView) findViewById(R.id.tvRegisterError);
          
         // Register Button Click event
-        btnRegister.setOnClickListener(new View.OnClickListener() {         
+        btnRegister.setOnClickListener(new View.OnClickListener() {  
+        	
             public void onClick(View view) {
+            	
                 String firstname = etFirstName.getText().toString();
                 String lastname = etLastName.getText().toString();
                 String address = etAddress.getText().toString();
@@ -91,38 +103,58 @@ public class RegisterActivity extends Activity {
                 String password = etPassword.getText().toString();
                 String cpassword = etCPassword.getText().toString();
                 String email = etEmail.getText().toString();
+                
+                if(firstname.isEmpty() || lastname.isEmpty() || address.isEmpty() || city.isEmpty()
+                		|| province.isEmpty() || postalcode.isEmpty() || dob.isEmpty() || username.isEmpty()
+                		|| password.isEmpty() || cpassword.isEmpty() || email.isEmpty()) {
+                	
+                	String text = "Fill up the Empty Field";
+                	tvRegisterError.setText(text);
+                	Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+                	
+                } else {
+                	
+                	if(!password.matches(cpassword)) {
+                		
+	                	String text = "Password and Confirm Password does not match";
+	                	tvRegisterError.setText(text);
+	                	Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+	                	
+                	} else if(!checkEmail(email)){
+                		
+                		String text = "Email is not valid";
+	                	tvRegisterError.setText(text);
+	                	Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+	                	
+                	} else {
 
-                UserFunctions userFunction = new UserFunctions();
-                JSONObject json = userFunction.registerUser(firstname, lastname, address, city, province, postalcode, dob, usertype, username, password, email);
-                 
-                // check for login response
-                try {
-                    if (json.getString(KEY_SUCCESS) != null) {
-                        tvRegisterError.setText("");
-                        String res = json.getString(KEY_SUCCESS); 
-                        if(Integer.parseInt(res) == 1){
-                            // user successfully registred
-                            // Store user details in SQLite Database
-                            DBHandler db = new DBHandler(getApplicationContext());
-                            JSONObject json_user = json.getJSONObject("user");
-                             
-                            // Clear all previous data in database
-                            userFunction.logoutUser(getApplicationContext());
-                            db.addUser(json_user.getString(KEY_FIRSTNAME), json_user.getString(KEY_LASTNAME), json_user.getString(KEY_USERNAME), json_user.getString(KEY_EMAIL));                        
-                            // Launch Dashboard Screen
-                            Intent dashboard = new Intent(getApplicationContext(), DashboardActivity.class);
-                            // Close all views before launching Dashboard
-                            dashboard.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(dashboard);
-                            // Close Registration Screen
-                            finish();
-                        }else{
-                            // Error in registration
-                        	tvRegisterError.setText("Error occured in registration");
-                        }
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+		                UserFunctions userFunction = new UserFunctions();
+		                JSONObject json = userFunction.registerUser(firstname, lastname, address, city, province, postalcode, dob, usertype, username, password, email);
+		                
+						try {
+							if(json.getString(KEY_SUCCESS) != null) {
+								int success = Integer.parseInt(json.getString(KEY_SUCCESS));
+								if(success == 1) {
+									tvRegisterError.setText(""); 
+									//reset tables
+					                userFunction.logoutUser(getApplicationContext());
+					                
+					                //go to verify screen for 5 secs then logout
+									Intent intent = new Intent(getApplicationContext(), VerifyActivity.class);
+									intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					                startActivity(intent);
+					                finish();
+					                
+								} else {
+									tvRegisterError.setText(json.getString(KEY_ERROR_MSG)); 
+								}
+							}
+							
+						} catch (JSONException e) {
+							e.printStackTrace();
+						} 
+						
+                	}
                 }
             }
         });
@@ -131,12 +163,16 @@ public class RegisterActivity extends Activity {
         btnLinkToLogin.setOnClickListener(new View.OnClickListener() {
  
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),
-                        LoginActivity.class);
+            	
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(i);
-                // Close Registration View
                 finish();
+                
             }
         });
+    }
+    
+    private boolean checkEmail(String email) {
+        return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
     }
 }

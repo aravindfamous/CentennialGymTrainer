@@ -1,5 +1,6 @@
 package com.gymcoach;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,7 +17,6 @@ import com.library.DBHandler;
 import com.library.UserFunctions;
 
 public class LoginActivity extends Activity {
-
 	Button btnLogin;
     Button btnLinkToRegister;
     EditText etUsername;
@@ -25,12 +25,16 @@ public class LoginActivity extends Activity {
  
     // JSON Response node names
     private static String KEY_SUCCESS = "success";
-    //private static String KEY_ERROR = "error";
-    private static String KEY_ERROR_MSG = "error_msg";
+    
     private static String KEY_FIRSTNAME = "firstname";
     private static String KEY_LASTNAME = "lastname";
     private static String KEY_USERNAME = "username";
     private static String KEY_EMAIL = "email";
+    private static String KEY_VERIFIED = "verified";
+    private static String KEY_PLANID = "planID";
+    private static String KEY_CURRENTDAY = "currentday";
+    
+    
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,7 @@ public class LoginActivity extends Activity {
                 UserFunctions userFunction = new UserFunctions();
                 JSONObject json = userFunction.loginUser(username, password);
  
+                
                 // check for login response
                 try {
                     if (json.getString(KEY_SUCCESS) != null) {
@@ -60,13 +65,20 @@ public class LoginActivity extends Activity {
                         String res = json.getString(KEY_SUCCESS); 
                         if(Integer.parseInt(res) == 1){
                             // user successfully logged in
-                            // Store user details in SQLite Database
                             DBHandler db = new DBHandler(getApplicationContext());
+                            //getJson object and arrays
                             JSONObject json_user = json.getJSONObject("user");
-                             
+                            JSONArray json_exercise_array = json.getJSONArray("exercise"); 
+                            
                             // Clear all previous data in database
                             userFunction.logoutUser(getApplicationContext());                    
-                            db.addUser(json_user.getString(KEY_FIRSTNAME), json_user.getString(KEY_LASTNAME), json_user.getString(KEY_USERNAME), json_user.getString(KEY_EMAIL));
+                            db.addUser(json_user.getString(KEY_FIRSTNAME), json_user.getString(KEY_LASTNAME), 
+                            		json_user.getString(KEY_USERNAME), json_user.getString(KEY_EMAIL), 
+                            		json_user.getString(KEY_VERIFIED), Integer.parseInt(json_user.getString(KEY_PLANID)), 
+                            		Integer.parseInt(json_user.getString(KEY_CURRENTDAY)));
+                            
+                            userFunction.addPlan(getApplicationContext(), json_exercise_array);
+
                             // Launch Dashboard Screen
                             Intent dashboard = new Intent(getApplicationContext(), DashboardActivity.class);
                              
@@ -77,8 +89,11 @@ public class LoginActivity extends Activity {
                             // Close Login Screen
                             finish();
                         }else{
-                            // Error in login
-                        	tvLoginError.setText(json.getString(KEY_ERROR_MSG));
+                        	int error = Integer.parseInt(json.getString("error"));
+                            if(error == 1)
+                            	tvLoginError.setText("Incorrect email or password!");
+                            else if(error == 2)
+                            	tvLoginError.setText("Username is not registered");
                         }
                     }
                 } catch (JSONException e) {
@@ -89,7 +104,6 @@ public class LoginActivity extends Activity {
  
         // Link to Register Screen
         btnLinkToRegister.setOnClickListener(new View.OnClickListener() {
- 
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(i);
