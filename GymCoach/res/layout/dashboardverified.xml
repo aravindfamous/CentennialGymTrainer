@@ -10,24 +10,22 @@
     tools:context=".DashboardActivity" >
 
     <TextView
-        android:id="@+id/tvWelcome"
+        android:id="@+id/tvVerified"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dip"
         android:gravity="center"
-        android:text="@string/welcome"
+        android:text="@string/verified"
         android:textSize="40sp" />
 
-    <Button
-        android:id="@+id/btnGenerateAPlan"
-        style="@style/btnBlue"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/Home"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:height="200dp"
-        android:text="@string/generateaplan"
-        android:textSize="23sp"
-        android:width="200dp" />
+        android:layout_alignLeft="@+id/tvVerified"
+        android:layout_below="@+id/tvVerified"
+        android:layout_marginTop="22dp"
+        android:gravity="center"
+        android:textSize="30sp"/>
 
 </RelativeLayout>
