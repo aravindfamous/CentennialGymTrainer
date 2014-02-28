@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp"
         android:contentDescription="@string/logo"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/trainer" />
 
     <TextView
         android:id="@+id/textView1"
@@ -27,60 +27,27 @@
         android:layout_below="@+id/imageView1"
         android:layout_marginTop="30dp"
         android:text="@string/username" />
-
-    <EditText
-        android:id="@+id/etUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView1"
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_alignParentRight="true"
-        android:ems="10"
-        android:inputType="textPersonName">
-        
-        <requestFocus />
-    </EditText>
-
-    <Button
-        android:id="@+id/btnLogin"
-        style="@style/btnBlue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:text="@string/login"
-        android:textSize="18sp" />
 	<!--  Error message -->
+
     <Button
         android:id="@+id/btnLinkToRegisterScreen"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/etPassword"
         android:layout_below="@+id/btnLogin"
+        android:layout_marginTop="14dp"
         android:background="@null"
         android:text="@string/linktoregister"
         android:textColor="#21dbd4"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tvLoginError"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/etUsername"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignRight="@+id/etUsername"
-        android:padding="10dip"
-        android:textColor="#e30000"
-        android:textStyle="bold" />
-
-    <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_marginTop="25dp"
+        android:layout_below="@+id/etUsername"
+        android:layout_marginTop="40dp"
+        android:layout_toLeftOf="@+id/imageView1"
         android:text="@string/password"
         android:textStyle="bold" />
 
@@ -91,7 +58,44 @@
         android:layout_alignBaseline="@+id/textView2"
         android:layout_alignBottom="@+id/textView2"
         android:layout_alignLeft="@+id/etUsername"
+        android:layout_alignParentRight="true"
         android:ems="10"
         android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/btnBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="58dp"
+        android:text="@string/login"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvLoginError"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/etPassword"
+        android:layout_below="@+id/etPassword"
+        android:layout_marginTop="14dp"
+        android:gravity="center"
+        android:padding="10dip"
+        android:textColor="#e30000"
+        android:textStyle="bold" />
 
 </RelativeLayout>

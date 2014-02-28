@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:text="@string/firstname"/>
 
     <TextView
@@ -132,25 +132,16 @@
         android:text="@string/email"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvRegistration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/registration"
-        android:textSize="32sp"
-        android:textStyle="bold" />
-
     <EditText
         android:id="@+id/etFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:width="210dp"
         android:layout_alignBaseline="@+id/tvFirstName"
         android:layout_alignBottom="@+id/tvFirstName"
         android:layout_alignParentRight="true"
-        android:ems="10"
-        android:inputType="textPersonName" >
+        android:inputType="textPersonName"
+        >
         
         <requestFocus />
     </EditText>
@@ -165,16 +156,6 @@
         android:layout_alignParentRight="true"
         android:ems="10"
         android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/etAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvAddress"
-        android:layout_alignBottom="@+id/tvAddress"
-        android:layout_alignLeft="@+id/etLastName"
-        android:ems="10"
-        android:inputType="textPostalAddress" />
 
     <EditText
         android:id="@+id/etCity"
@@ -198,15 +179,6 @@
         android:inputType="textPostalAddress" />
 
     <EditText
-        android:id="@+id/etPostalCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etProvince"
-        android:layout_alignTop="@+id/tvPostalCode"
-        android:ems="10"
-        android:inputType="textPostalAddress" />
-
-    <EditText
         android:id="@+id/etDOB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -214,7 +186,7 @@
         android:layout_alignBottom="@+id/tvDOB"
         android:layout_alignLeft="@+id/etPostalCode"
         android:ems="10"
-        android:inputType="date" />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/etUsername"
@@ -223,36 +195,8 @@
         android:layout_alignBaseline="@+id/tvUsername"
         android:layout_alignBottom="@+id/tvUsername"
         android:layout_alignLeft="@+id/etDOB"
-        android:ems="10" />
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvPassword"
-        android:layout_alignBottom="@+id/tvPassword"
-        android:layout_alignLeft="@+id/etUsername"
         android:ems="10"
-        android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/etCPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etPassword"
-        android:layout_alignTop="@+id/tvCPassword"
-        android:ems="10"
-        android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvEmail"
-        android:layout_alignBottom="@+id/tvEmail"
-        android:layout_alignLeft="@+id/etCPassword"
-        android:ems="10"
-        android:inputType="textEmailAddress" />
+		android:inputType="text" />
 
     <TextView
         android:id="@+id/tvRegisterError"
@@ -262,7 +206,10 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/etEmail"
         android:layout_marginTop="14dp"
-        android:textSize="25sp" />
+        android:gravity="center"
+        android:padding="10dip"
+        android:textColor="#e30000"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btnRegister"
@@ -271,15 +218,6 @@
         android:layout_below="@+id/tvRegisterError"
         android:layout_centerHorizontal="true"
         android:text="@string/register" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etDOB"
-        android:layout_below="@+id/etDOB"
-        android:layout_marginTop="10dp"
-        android:text="@string/dateformat" />
     
     <Button
         android:id="@+id/btnLinkToLoginScreen"
@@ -292,14 +230,84 @@
         android:textColor="#21dbd4"
         android:textStyle="bold" />
 
+    <EditText
+        android:id="@+id/etAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvAddress"
+        android:layout_alignBottom="@+id/tvAddress"
+        android:layout_alignLeft="@+id/etLastName"
+        android:layout_alignRight="@+id/etLastName"
+        android:ems="10"
+        android:inputType="textPostalAddress" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/spinnerUserType"
+        android:layout_below="@+id/etDOB"
+        android:layout_marginTop="10dp"
+        android:text="@string/dateformat" />
+
     <Spinner
         android:id="@+id/spinnerUserType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/etUsername"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/textView1"
         android:ems="10" />
+
+    <EditText
+        android:id="@+id/etPostalCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etProvince"
+        android:layout_alignTop="@+id/tvPostalCode"
+        android:ems="10"
+        android:inputType="textPostalAddress" />
+
+    <TextView
+        android:id="@+id/tvRegistration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/registration"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvPassword"
+        android:layout_alignBottom="@+id/tvPassword"
+        android:layout_alignLeft="@+id/etUsername"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/etCPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvEmail"
+        android:layout_alignLeft="@+id/etUsername"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvEmail"
+        android:layout_alignBottom="@+id/tvEmail"
+        android:layout_alignLeft="@+id/etCPassword"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
 
 </RelativeLayout>
 </ScrollView>
