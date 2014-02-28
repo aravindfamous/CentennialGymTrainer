@@ -1,0 +1,43 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/leftBehindMenuScroll" >
+
+    <LinearLayout
+        style="@style/behindMenuScrollContent"
+        android:layout_height="473dp" >
+
+        <TextView
+            style="@style/behindMenuItemTitle"
+            android:layout_width="match_parent"
+            android:text="@string/gymcentennialtrainer" />
+        
+        <TextView style="@style/hr" />
+        
+        <TextView android:id="@+id/tvHome"
+            style="@style/behindMenuItemLabel" 
+            android:text="@string/home"/>     
+        <TextView android:id="@+id/tvExerciseCurrentDay"
+            style="@style/behindMenuItemLabel"
+            android:text="@string/exerciseplan" />     
+        <TextView
+            style="@style/behindMenuItemLabel" />       
+        <TextView
+            style="@style/behindMenuItemLabel" />
+        <TextView
+            style="@style/behindMenuItemLabel" />
+        <TextView
+            style="@style/behindMenuItemLabel" />
+        <TextView
+            style="@style/behindMenuItemLabel" />
+        <TextView
+            style="@style/behindMenuItemLabel" />
+        <TextView
+            style="@style/behindMenuItemLabel" />
+        
+        <TextView style="@style/hr" />
+        <Button
+            android:id="@+id/btnBehindLogout"
+            android:layout_width="match_parent"
+            style="@style/behindMenuButton"
+            android:text="@string/logout" />
+    </LinearLayout>
+</ScrollView>
