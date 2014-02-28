@@ -1,5 +1,52 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <style name="leftBehindMenuScroll">
+        <item name="android:layout_width">240dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        
+    </style>
+    <style name="behindMenuScrollContent">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_marginLeft">-3dip</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/border</item>
+    </style>
+    <style name="behindMenuItemTitle">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_marginLeft">3dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:background">#1C1C1C</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="behindMenuItemLabel">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:paddingTop">11dp</item>
+        <item name="android:paddingBottom">11dp</item>
+        <item name="android:background">@android:drawable/list_selector_background</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="behindMenuButton">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:background">#1C1C1C</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="hr">
+        <item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">2dp</item>
+		<item name="android:background">#000000</item>
+    </style>
+    
     <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -17,6 +64,8 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    
+    
     <style name="btnBlue" parent="@android:style/Widget.Button">
        <item name="android:textSize">15sp</item>
        <item name="android:textStyle">bold</item>
@@ -29,4 +78,11 @@
        <item name="android:background">@drawable/custom_button</item>
        <item name="android:padding">10dip</item>
    </style>
+   
+    <style name="piStyle">
+       <item name="android:layout_marginTop">27dp</item>
+       <item name="android:textSize">18sp</item>
+    </style>
+    
+    
 </resources>

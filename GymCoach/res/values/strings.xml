@@ -6,11 +6,11 @@
     <string name="logout">Log Out</string>
     <string name="welcome">Welcome!</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_simple">SimpleSideDrawer</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-	<string name="confirmpassword">Confirm Password</string>
+    <string name="confirmpassword">Confirm Password</string>
     <string name="logo">Centennial Trainer</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
@@ -27,5 +27,61 @@
     <string name="dob">Birthday</string>
     <string name="registration">Registration</string>
     <string name="dateformat">yyyy-mm-dd</string>
+    <string name="verified">Welcome!</string>
+    <string name="generateaplan">Generate a Plan</string>
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>Home</item>
+        <item>Find People</item>
+        <item>Photos</item>
+        <item>Communities</item>
+        <item>Pages</item>
+        <item>What\'s Hot</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!--
+    Keep them in order as the titles are in
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_people</item>
+        <item>@drawable/ic_photos</item>
+        <item>@drawable/ic_communities</item>
+        <item>@drawable/ic_pages</item>
+        <item>@drawable/ic_whats_hot</item>
+    </array>
+    -->
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+    <string name="gymcentennialtrainer">Gym Centennial Trainer</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="personalinfo">Personal Info</string>
+    <string name="age">Age</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="gender">Gender</string>
+    <string name="bmi">BMI</string>
+    <string name="bmr">BMR</string>
+    <string name="pds">pds</string>
+    <string name="ft">ft</string>
+    <string name="in">in</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="calculatebmiandbmr">Calculate BMI and BMR</string>
+    <string name="sendinfo">Send Info</string>
+    <string name="verify">Your account info has been sent and we sent a verification email. Remember to check your inbox OR SPAM folder to verify your account.</string>
+    <string name="title_activity_verify">VerifyActivity</string>
+    <string name="home">Home</string>
+    <string name="exerciseplan">Exercise Plan</string>
+    <string name="title_activity_exercise">ExerciseActivity</string>
+    <string name="typeofworkout">Type Of Workout</string>
+    <string name="done">Done</string>
+    <string name="notverified">You are not verified yet, you can send another verification email or change your email and then send a verification email.</string>
+    <string name="sendverification">Send another verification email</string>
+    <string name="changeemail">Change Email</string>
 
 </resources>
