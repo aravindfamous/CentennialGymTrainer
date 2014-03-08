@@ -6,7 +6,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    
     <uses-sdk
         android:minSdkVersion="9"
         android:targetSdkVersion="19" />
@@ -51,6 +54,12 @@
             android:name="com.gymcoach.ExerciseActivity"
             android:label="@string/title_activity_exercise" >
         </activity>
+        
+        <receiver android:name="com.library.BReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

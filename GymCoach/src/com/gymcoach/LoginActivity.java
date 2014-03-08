@@ -48,6 +48,15 @@ public class LoginActivity extends Activity {
         btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
         tvLoginError = (TextView) findViewById(R.id.tvLoginError);
  
+        /*
+        String day;
+        SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
+
+        Calendar calendar = Calendar.getInstance();
+        day = dayFormat.format(calendar.getTime());
+        tvLoginError.setText(day);
+        */
+        
         // Login button Click Event
         btnLogin.setOnClickListener(new View.OnClickListener() {
  
@@ -57,6 +66,7 @@ public class LoginActivity extends Activity {
                 UserFunctions userFunction = new UserFunctions();
                 JSONObject json = userFunction.loginUser(username, password);
  
+                
                 
                 // check for login response
                 try {

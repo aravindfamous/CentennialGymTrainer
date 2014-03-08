@@ -1,15 +1,23 @@
 package com.gymcoach;
 
+import java.util.Calendar;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.library.BReceiver;
 import com.library.SimpleSideDrawer;
 import com.library.UserFunctions;
 
@@ -41,11 +49,12 @@ public class DashboardActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        
         userFunctions = new UserFunctions();
 
         if(userFunctions.isUserLoggedIn(getApplicationContext())) {
         	setTitle(userFunctions.getName(getApplicationContext()));
-        	
+        	updateAllowed();
         	//if verified
         	if(userFunctions.isVerified(getApplicationContext())) {
         		//if has plan
@@ -97,6 +106,32 @@ public class DashboardActivity extends Activity {
         		nav = new SimpleSideDrawer(this);
         		nav.setLeftBehindContentView(R.layout.activity_behind_left_simple);
         		
+        		Button btnSendVerification = (Button) findViewById(R.id.btnSendVerification);
+        		Button btnChangeEmail = (Button) findViewById(R.id.btnChangeEmail);
+        		final EditText etEmail = (EditText) findViewById(R.id.etEmail);
+        		
+        		btnSendVerification.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View arg0) {
+						String email = userFunctions.getEmail(getApplicationContext());
+						userFunctions.verification(email, 1);
+					}
+				});
+        		
+        		btnChangeEmail.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View arg0) {
+						String email = userFunctions.getEmail(getApplicationContext());
+						String email2 = etEmail.getText().toString();
+						userFunctions.verification(email, 2, email2);
+						userFunctions.logoutUser(getApplicationContext());
+						Intent login = new Intent(getApplicationContext(), LoginActivity.class);
+			            login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			            startActivity(login);
+			            // Closing dashboard screen
+			            finish();
+					}
+				});
         	}
         	
         	listeners();
@@ -147,5 +182,22 @@ public class DashboardActivity extends Activity {
                 finish();
 				}
 			});
+    }
+    
+    public void updateAllowed() {
+    	Calendar calendar = Calendar.getInstance();
+    	// 9 AM 
+    	calendar.set(Calendar.HOUR_OF_DAY, 9);
+    	calendar.set(Calendar.MINUTE, 0);
+    	calendar.set(Calendar.SECOND, 0);
+    	
+    	Intent intentAlarm = new Intent(this, BReceiver.class);
+        
+        // create the object
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        //set the alarm for particular time
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), PendingIntent.getBroadcast(this,1,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+        Toast.makeText(getApplicationContext(), "YO", Toast.LENGTH_LONG).show();
     }
 }

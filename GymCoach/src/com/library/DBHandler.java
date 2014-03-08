@@ -31,6 +31,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_VERIFIED = "verified";
     private static final String KEY_PLANID = "planID";
     private static final String KEY_CURRENTDAY = "currentday";
+    private static final String KEY_ALLOWED = "allowed";
     
     //Exercise Plan Table Column Names
     private static final String KEY_EXERCISEID = "exerciseID";
@@ -56,7 +57,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 + KEY_EMAIL + " TEXT UNIQUE,"
                 + KEY_VERIFIED + " TEXT,"
                 + KEY_PLANID + " INTEGER,"
-                + KEY_CURRENTDAY + " INTEGER" 
+                + KEY_CURRENTDAY + " INTEGER,"
+                + KEY_ALLOWED + " INTEGER DEFAULT 1" 
                 + ")";
         
         String CREATE_EXERCISE_TABLE = "CREATE TABLE " + TABLE_EXERCISE + "("
@@ -198,6 +200,13 @@ public class DBHandler extends SQLiteOpenHelper {
     	ContentValues cv = new ContentValues();
     	cv.put("planID", planID);
     	db.update(TABLE_LOGIN, cv, "gymuserID='1'", null);
+    }
+    
+    public void updateAllowed(String username) {
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	ContentValues cv = new ContentValues();
+    	cv.put("allowed", 0);
+    	db.update(TABLE_LOGIN, cv, "username='" + username + "'"  , null);
     }
 
      

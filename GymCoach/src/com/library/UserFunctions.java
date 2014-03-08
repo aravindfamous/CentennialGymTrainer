@@ -20,6 +20,7 @@ public class UserFunctions {
     private static String login_tag = "login";
     private static String register_tag = "register";
     private static String generate_tag = "generate";
+    private static String verification_tag = "verification";
     
     //JSON Response node names for exercise
     private static String KEY_BODYPART = "body_part";
@@ -81,6 +82,27 @@ public class UserFunctions {
     	
     	return jsonParser.getJSONFromUrl(URL, params);
     }
+    
+    public void verification(String email, int num) {
+    	final List<NameValuePair> params = new ArrayList<NameValuePair>();	
+
+    	params.add(new BasicNameValuePair("tag", verification_tag));
+    	params.add(new BasicNameValuePair("email", email));
+    	params.add(new BasicNameValuePair("number", "" + num));
+    	
+    	jsonParser.getJSONFromUrl(URL, params);
+    }
+    
+    public void verification(String email, int num, String email2) {
+    	final List<NameValuePair> params = new ArrayList<NameValuePair>();	
+
+    	params.add(new BasicNameValuePair("tag", verification_tag));
+    	params.add(new BasicNameValuePair("email", email));
+    	params.add(new BasicNameValuePair("number", "" + num));
+    	params.add(new BasicNameValuePair("email2", email2));
+    	
+    	jsonParser.getJSONFromUrl(URL, params);
+    }
      
     /*
      * DATABASE FUNCTIONS!!!!
@@ -138,6 +160,12 @@ public class UserFunctions {
     	DBHandler db = new DBHandler(context);
     	HashMap<String,String> user = db.getUserDetails();
     	return Integer.parseInt(user.get("currentday"));
+    }
+    
+    public String getEmail(Context context) {
+    	DBHandler db = new DBHandler(context);
+    	HashMap<String,String> user = db.getUserDetails();
+    	return user.get("email");
     }
     
     public ArrayList<ExercisePlan> getExercisePlanByDay(Context context, int day) {
