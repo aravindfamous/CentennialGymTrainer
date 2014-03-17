@@ -10,7 +10,7 @@ public class BReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		DBHandler db = new DBHandler(context);
-		db.updateAllowed(db.getUserDetails().get("username").toString());
+		db.updateAllowed(db.getUserDetails().get("username").toString(), 0);
 		Toast.makeText(context, "You allowed again", Toast.LENGTH_LONG).show();
 	}
 

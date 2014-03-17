@@ -140,6 +140,7 @@ public class DBHandler extends SQLiteOpenHelper {
             user.put("verified", cursor.getString(5));
             user.put("planID", cursor.getString(6));
             user.put("currentday", cursor.getString(7));
+            user.put("allowed", cursor.getString(8));
         }
         cursor.close();
         db.close();
@@ -202,10 +203,10 @@ public class DBHandler extends SQLiteOpenHelper {
     	db.update(TABLE_LOGIN, cv, "gymuserID='1'", null);
     }
     
-    public void updateAllowed(String username) {
+    public void updateAllowed(String username, int number) {
     	SQLiteDatabase db = this.getWritableDatabase();
     	ContentValues cv = new ContentValues();
-    	cv.put("allowed", 0);
+    	cv.put("allowed", number);
     	db.update(TABLE_LOGIN, cv, "username='" + username + "'"  , null);
     }
 

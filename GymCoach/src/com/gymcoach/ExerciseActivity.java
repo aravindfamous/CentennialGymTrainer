@@ -23,6 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.library.DBHandler;
 import com.library.ExercisePlan;
 import com.library.SimpleSideDrawer;
 import com.library.UserFunctions;
@@ -111,14 +112,17 @@ public class ExerciseActivity extends Activity {
 					}	
 				}
 				
-				if(count == exerciseList.size()) {
+				if(count == exerciseList.size() && userFunctions.getAllowed(getApplicationContext()) == 0) {
 					ConnectivityManager connec = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-				    if (connec != null && (connec.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTED) ||(connec.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED)){ 
+				    if (connec != null && (connec.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTED) ||(connec.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED)){
+				    	
 				    	userFunctions.updateCurrentDay(getApplicationContext(), currentDay + 1);
+				    	new DBHandler(getApplicationContext()).updateAllowed(userFunctions.getUsername(getApplicationContext()), 1);
 						Intent intent = new Intent(getApplicationContext(), ExerciseActivity.class);
 						intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						startActivity(intent);
 						finish();
+						
 				    }else if (connec.getNetworkInfo(0).getState() == NetworkInfo.State.DISCONNECTED ||  connec.getNetworkInfo(1).getState() == NetworkInfo.State.DISCONNECTED ) {                   
 				        Toast.makeText(getApplicationContext(), "You must be connected to the internet", Toast.LENGTH_LONG).show();
 				    } 

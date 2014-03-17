@@ -54,7 +54,9 @@ public class DashboardActivity extends Activity {
 
         if(userFunctions.isUserLoggedIn(getApplicationContext())) {
         	setTitle(userFunctions.getName(getApplicationContext()));
-        	updateAllowed();
+        	if(userFunctions.getAllowed(getApplicationContext()) == 1) {
+        		updateAllowed();
+        	}
         	//if verified
         	if(userFunctions.isVerified(getApplicationContext())) {
         		//if has plan

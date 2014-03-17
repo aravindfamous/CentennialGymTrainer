@@ -168,6 +168,12 @@ public class UserFunctions {
     	return user.get("email");
     }
     
+    public int getAllowed(Context context) {
+    	DBHandler db = new DBHandler(context);
+    	HashMap<String,String> user = db.getUserDetails();
+    	return Integer.parseInt(user.get("allowed"));
+    }
+    
     public ArrayList<ExercisePlan> getExercisePlanByDay(Context context, int day) {
     	DBHandler db = new DBHandler(context);
     	return db.getExercisePlanByDay(day);
