@@ -2,8 +2,7 @@
     style="@style/leftBehindMenuScroll" >
 
     <LinearLayout
-        style="@style/behindMenuScrollContent"
-        android:layout_height="473dp" >
+        style="@style/behindMenuScrollContent" >
 
         <TextView
             style="@style/behindMenuItemTitle"
@@ -15,9 +14,11 @@
         <TextView android:id="@+id/tvHome"
             style="@style/behindMenuItemLabel" 
             android:text="@string/home"/>     
+            
         <TextView android:id="@+id/tvExerciseCurrentDay"
             style="@style/behindMenuItemLabel"
-            android:text="@string/exerciseplan" />     
+            android:text="@string/exerciseplan" />  
+               
         <TextView
             style="@style/behindMenuItemLabel" />       
         <TextView
