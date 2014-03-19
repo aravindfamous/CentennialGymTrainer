@@ -1,44 +1,41 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/leftBehindMenuScroll" >
+    style="@style/leftBehindMenuScroll"
+    android:fillViewport="true" >
 
-    <LinearLayout
-        style="@style/behindMenuScrollContent" >
-
-        <TextView
-            style="@style/behindMenuItemTitle"
-            android:layout_width="match_parent"
-            android:text="@string/gymcentennialtrainer" />
+    <RelativeLayout
+        style="@style/behindMenuScrollContent">
         
-        <TextView style="@style/hr" />
+        <TextView 
+            android:id="@+id/hr"
+            style="@style/hr" 
+            android:layout_below="@+id/tvTitle"/>
         
         <TextView android:id="@+id/tvHome"
             style="@style/behindMenuItemLabel" 
-            android:text="@string/home"/>     
+            android:text="@string/home"
+            android:layout_below="@+id/hr"/>     
             
         <TextView android:id="@+id/tvExerciseCurrentDay"
             style="@style/behindMenuItemLabel"
-            android:text="@string/exerciseplan" />  
-               
-        <TextView
-            style="@style/behindMenuItemLabel" />       
-        <TextView
-            style="@style/behindMenuItemLabel" />
-        <TextView
-            style="@style/behindMenuItemLabel" />
-        <TextView
-            style="@style/behindMenuItemLabel" />
-        <TextView
-            style="@style/behindMenuItemLabel" />
-        <TextView
-            style="@style/behindMenuItemLabel" />
-        <TextView
-            style="@style/behindMenuItemLabel" />
-        
-        <TextView style="@style/hr" />
+            android:text="@string/exerciseplan"
+            android:layout_below="@+id/tvHome" />  
+
         <Button
             android:id="@+id/btnBehindLogout"
-            android:layout_width="match_parent"
             style="@style/behindMenuButton"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:text="@string/logout" />
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/behindMenuItemTitle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/gymcentennialtrainer" />
+        
+    </RelativeLayout>
+    
 </ScrollView>
