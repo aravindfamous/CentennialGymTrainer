@@ -83,5 +83,6 @@
     <string name="notverified">You are not verified yet, you can send another verification email or change your email and then send a verification email.</string>
     <string name="sendverification">Send another verification email</string>
     <string name="changeemail">Change Email</string>
+    <string name="viewvideo">| View Video</string>
 
 </resources>

@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +38,7 @@ public class ExerciseActivity extends Activity {
 	private int currentDay;
 	
 	Button btnBehindLogout;
+	Button btnDone;
 	TextView tvHome;
     TextView tvExerciseCurrentDay;
 	
@@ -43,6 +46,7 @@ public class ExerciseActivity extends Activity {
 	@SuppressWarnings("deprecation")
 	private int apiLevel = Integer.valueOf(android.os.Build.VERSION.SDK);
 	SimpleSideDrawer nav;
+	private int count;
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -65,9 +69,10 @@ public class ExerciseActivity extends Activity {
 		currentDay = userFunctions.getCurrentDay(getApplicationContext());
 		TextView tvCurrentDay = (TextView) findViewById(R.id.tvCurrentDay);
 		tvCurrentDay.setText("Day " + currentDay);
+		btnDone = (Button) findViewById(R.id.btnDone);
 		
 		displayListView();
-		
+
 		if(apiLevel >= 11) {
 			getActionBar().setDisplayHomeAsUpEnabled(true);
     		nav = new SimpleSideDrawer(this);
@@ -88,49 +93,41 @@ public class ExerciseActivity extends Activity {
 		// Assign adapter to ListView
 		listView.setAdapter(dataAdapter);
 		
-		listView.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-		    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		    // When clicked, show a toast with the TextView text
-		    ExercisePlan ep = (ExercisePlan) parent.getItemAtPosition(position);
-		    Toast.makeText(getApplicationContext(),
-		      "Clicked on Row: " + ep.getExerciseName(),
-		      Toast.LENGTH_LONG).show();
-		   }
-		});
 		
-		Button btnDone = (Button) findViewById(R.id.btnDone);
 		btnDone.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				int count = 0;
 				ArrayList<ExercisePlan> exerciseList = dataAdapter.exerciseList;
-				for(int i = 0; i < exerciseList.size(); i++) {
-					ExercisePlan ep = exerciseList.get(i);
-					if(ep.isSelected()) {
-						count++;
-					}	
-				}
 				
-				if(count == exerciseList.size() && userFunctions.getAllowed(getApplicationContext()) == 0) {
-					ConnectivityManager connec = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-				    if (connec != null && (connec.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTED) ||(connec.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED)){
-				    	
-				    	userFunctions.updateCurrentDay(getApplicationContext(), currentDay + 1);
-				    	new DBHandler(getApplicationContext()).updateAllowed(userFunctions.getUsername(getApplicationContext()), 1);
-						Intent intent = new Intent(getApplicationContext(), ExerciseActivity.class);
-						intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-						startActivity(intent);
-						finish();
+				if(count == exerciseList.size()) {
+					
+					if(userFunctions.getAllowed(getApplicationContext()) == 0) {
+						ConnectivityManager connec = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 						
-				    }else if (connec.getNetworkInfo(0).getState() == NetworkInfo.State.DISCONNECTED ||  connec.getNetworkInfo(1).getState() == NetworkInfo.State.DISCONNECTED ) {                   
-				        Toast.makeText(getApplicationContext(), "You must be connected to the internet", Toast.LENGTH_LONG).show();
-				    } 
+					    if (connec != null && (connec.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTED) ||(connec.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED)){
+					    	userFunctions.updateCurrentDay(getApplicationContext(), currentDay + 1);
+					    	new DBHandler(getApplicationContext()).updateAllowed(userFunctions.getUsername(getApplicationContext()), 1);
+							Intent intent = new Intent(getApplicationContext(), ExerciseActivity.class);
+							intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+							startActivity(intent);
+							finish();
+							
+					    }else if (connec.getNetworkInfo(0).getState() == NetworkInfo.State.DISCONNECTED ||  connec.getNetworkInfo(1).getState() == NetworkInfo.State.DISCONNECTED ) {                   
+					        Toast.makeText(getApplicationContext(), "You must be connected to the internet", Toast.LENGTH_LONG).show();
+					    } 
+					    
+					} else {
+						Toast.makeText(getApplicationContext(), "Not allowed today", Toast.LENGTH_SHORT).show();
+					}
+					
 				} else {
 					Toast.makeText(getApplicationContext(), "Not Finished", Toast.LENGTH_SHORT).show();
 				}
+				
 			}
 		});
+		
+		
 	}
 
 	private class MyCustomAdapter extends ArrayAdapter<ExercisePlan> {
@@ -147,6 +144,7 @@ public class ExerciseActivity extends Activity {
 		TextView exerciseName;
 		CheckBox bodyPart;
 		TextView numbers;
+		TextView viewVideo;
 	}
 	  
 	@Override
@@ -157,20 +155,42 @@ public class ExerciseActivity extends Activity {
 	  
 		if (convertView == null) {
 			LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			convertView = vi.inflate(R.layout.listview_layout, null);
-			  
+			convertView = vi.inflate(R.layout.listview_layout, null); 
+			
+			//new holder
 			holder = new ViewHolder();
 			holder.exerciseName = (TextView) convertView.findViewById(R.id.code);
-			holder.bodyPart = (CheckBox) convertView.findViewById(R.id.checkBox1);
+			holder.bodyPart =(CheckBox) convertView.findViewById(R.id.checkBox1);
 			holder.numbers = (TextView) convertView.findViewById(R.id.numbers);
+			holder.viewVideo = (TextView) convertView.findViewById(R.id.viewVideo);
+			
 			convertView.setTag(holder);
 			holder.bodyPart.setOnClickListener( new View.OnClickListener() { 
 				public void onClick(View v) { 
 					CheckBox cb = (CheckBox) v ; 
 					ExercisePlan ep = (ExercisePlan) cb.getTag(); 
 					ep.setSelected(cb.isChecked());
+					
+					//to add count and minus when cb is checked or not checked
+					if(cb.isChecked())
+						count++;
+					else
+						count--;
+					
+					//Changes button to non transparent if all checked
+					if(count == exerciseList.size())
+						btnDone.getBackground().setAlpha(255);
 				} 
 			}); 
+			
+			holder.viewVideo.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					TextView tv = (TextView) v;
+					ExercisePlan ep = (ExercisePlan)  tv.getTag();
+					Toast.makeText(getApplicationContext(), "Go to Link of " + ep.getExerciseName(), Toast.LENGTH_SHORT).show();
+				}
+			});
 		}
 		else {
 			holder = (ViewHolder) convertView.getTag();
@@ -178,10 +198,17 @@ public class ExerciseActivity extends Activity {
 		  
 		ExercisePlan ep = exerciseList.get(position);
 		holder.exerciseName.setText(ep.getExerciseName());
-		holder.numbers.setText(ep.getNumOfSets() + " x " + ep.getNumOfReps());
+		
+		if(ep.getNumOfSets() == 0)
+			holder.numbers.setText(ep.getNumOfReps() + " per side");
+		else
+			holder.numbers.setText(ep.getNumOfSets() + " x " + ep.getNumOfReps());
+		
 		holder.bodyPart.setText(ep.getBodyPart());
 		holder.bodyPart.setChecked(ep.isSelected());
 		holder.bodyPart.setTag(ep);
+		
+		holder.viewVideo.setTag(ep);
 		  
 		return convertView;
 		

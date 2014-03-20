@@ -28,7 +28,7 @@
         android:layout_marginTop="14dp"
         android:background="@null"
         android:text="@string/linktoregister"
-        android:textColor="#21dbd4"
+        android:textColor="#333"
         android:textStyle="bold" />
 
     <TextView
@@ -68,6 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/username"
+            android:textColor="#3F3F3F"
             android:textStyle="bold" />
 
         <TextView
@@ -77,6 +78,7 @@
             android:layout_below="@+id/etUsername"
             android:layout_marginTop="40dp"
             android:text="@string/password"
+            android:textColor="#3F3F3F"
             android:textStyle="bold" />
 
         <EditText

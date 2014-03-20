@@ -227,7 +227,7 @@
         android:layout_below="@+id/btnRegister"
         android:background="@null"
         android:text="@string/linktologin"
-        android:textColor="#21dbd4"
+        android:textColor="#333"
         android:textStyle="bold" />
 
     <EditText
