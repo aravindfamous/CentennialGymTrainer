@@ -78,7 +78,8 @@ public class LoginActivity extends Activity {
                             DBHandler db = new DBHandler(getApplicationContext());
                             //getJson object and arrays
                             JSONObject json_user = json.getJSONObject("user");
-                            JSONArray json_exercise_array = json.getJSONArray("exercise"); 
+                            JSONArray json_exercise_array = json.getJSONArray("exercise");
+                            JSONArray json_diet_array = json.getJSONArray("diet"); 
                             
                             // Clear all previous data in database
                             userFunction.logoutUser(getApplicationContext());                    
@@ -87,7 +88,7 @@ public class LoginActivity extends Activity {
                             		json_user.getString(KEY_VERIFIED), Integer.parseInt(json_user.getString(KEY_PLANID)), 
                             		Integer.parseInt(json_user.getString(KEY_CURRENTDAY)));
                             
-                            userFunction.addPlan(getApplicationContext(), json_exercise_array);
+                            userFunction.addPlan(getApplicationContext(), json_exercise_array, json_diet_array);
 
                             // Launch Dashboard Screen
                             Intent dashboard = new Intent(getApplicationContext(), DashboardActivity.class);

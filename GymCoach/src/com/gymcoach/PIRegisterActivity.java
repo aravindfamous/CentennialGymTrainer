@@ -122,10 +122,11 @@ public class PIRegisterActivity extends Activity {
 				JSONObject json = userFunctions.generateAPlan(getApplicationContext(), height, weight, age, workoutType, gender, bmi, bmr);
 				
 				try {
-					JSONArray json_exercise_array = json.getJSONArray("exercise"); 
+					JSONArray json_exercise_array = json.getJSONArray("exercise");
+					JSONArray json_diet_array = json.getJSONArray("diet"); 
 					DBHandler db = new DBHandler(getApplicationContext());
 					db.updatePlanID(Integer.parseInt(json.getString("planID")));
-					userFunctions.addPlan(getApplicationContext(), json_exercise_array);
+					userFunctions.addPlan(getApplicationContext(), json_exercise_array, json_diet_array);
 					Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
 					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);

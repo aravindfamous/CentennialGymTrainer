@@ -21,6 +21,7 @@ public class UserFunctions {
     private static String register_tag = "register";
     private static String generate_tag = "generate";
     private static String verification_tag = "verification";
+    private static String update_tag = "update";
     
     //JSON Response node names for exercise
     private static String KEY_BODYPART = "body_part";
@@ -30,6 +31,12 @@ public class UserFunctions {
     private static String KEY_DAY = "day";
     private static String KEY_WORKOUTVIDEO = "workout_video";
      
+    //JSON Response node names for diet
+    private static final String KEY_DIETINFO = "diet_info";
+    private static final String KEY_SIZE = "size";
+    private static final String KEY_DAYOFWEEK = "day_of_week";
+    private static final String KEY_TIMEOFMEAL = "time_of_meal";
+    
     public UserFunctions(){
         jsonParser = new JSONParser();
     }
@@ -102,6 +109,35 @@ public class UserFunctions {
     	params.add(new BasicNameValuePair("email2", email2));
     	
     	jsonParser.getJSONFromUrl(URL, params);
+    }
+    
+    public void addPlan(Context context, JSONArray exercisearray, JSONArray dietarray) {
+    	DBHandler db = new DBHandler(context);
+    	for (int i=0; i < exercisearray.length(); i++)
+        {
+            try {
+                JSONObject json_exercise = exercisearray.getJSONObject(i);
+                int numOfReps = Integer.parseInt(json_exercise.getString(KEY_NUMOFREPS));
+                int numOfSets = Integer.parseInt(json_exercise.getString(KEY_NUMOFSETS));
+                int day = Integer.parseInt(json_exercise.getString(KEY_DAY));
+                db.addExercisePlan(json_exercise.getString(KEY_BODYPART), json_exercise.getString(KEY_EXERCISENAME), 
+                		numOfReps, numOfSets, day, json_exercise.getString(KEY_WORKOUTVIDEO));
+            } catch (JSONException e) {
+                // Oops
+            }
+        }
+    	
+    	for(int i = 0; i < dietarray.length(); i++) {
+    		try {
+				JSONObject json_diet = dietarray.getJSONObject(i);
+				db.addDietPlan(json_diet.getString(KEY_DIETINFO), json_diet.getString(KEY_SIZE), 
+						json_diet.getString(KEY_DAYOFWEEK), json_diet.getString(KEY_TIMEOFMEAL));
+				
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
     }
      
     /*
@@ -180,24 +216,21 @@ public class UserFunctions {
     }
     
     public void updateCurrentDay(Context context, int day) {
+    	//Database Update
     	DBHandler db = new DBHandler(context);
     	db.updateCurrentDay(day);
+    	
+    	//Online Database Update
+    	final List<NameValuePair> params = new ArrayList<NameValuePair>();	
+    	String username = getUsername(context);
+    	
+    	params.add(new BasicNameValuePair("tag", update_tag));
+    	params.add(new BasicNameValuePair("type", "currentday"));
+    	params.add(new BasicNameValuePair("username", username));
+    	params.add(new BasicNameValuePair("currentday", "" + day));
+    	
+    	jsonParser.getJSONFromUrl(URL, params);
     }
     
-    public void addPlan(Context context, JSONArray array) {
-    	DBHandler db = new DBHandler(context);
-    	for (int i=0; i < array.length(); i++)
-        {
-            try {
-                JSONObject json_exercise = array.getJSONObject(i);
-                int numOfReps = Integer.parseInt(json_exercise.getString(KEY_NUMOFREPS));
-                int numOfSets = Integer.parseInt(json_exercise.getString(KEY_NUMOFSETS));
-                int day = Integer.parseInt(json_exercise.getString(KEY_DAY));
-                db.addExercisePlan(json_exercise.getString(KEY_BODYPART), json_exercise.getString(KEY_EXERCISENAME), 
-                		numOfReps, numOfSets, day, json_exercise.getString(KEY_WORKOUTVIDEO));
-            } catch (JSONException e) {
-                // Oops
-            }
-        }
-    }
+    
 }

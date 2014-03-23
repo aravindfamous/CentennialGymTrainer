@@ -65,6 +65,14 @@ class DB_Functions {
             return false;
         }
     }
+
+    /*
+     * Updates
+     */
+
+    public function updateCurrentDay($username, $currentday) {
+        mysql_query("UPDATE gymuser SET currentday='$currentday' WHERE username='$username'");
+    }
  
     /**
      * Get user by email and password
@@ -105,6 +113,19 @@ class DB_Functions {
         }
     }
 
+    public function getUserByEmail($email) {
+        $result = mysql_query("SELECT * FROM user WHERE email = '$email'") or die(mysql_error());
+        $no_of_rows = mysql_num_rows($result);
+        if ($no_of_rows > 0) {
+            $result = mysql_fetch_array($result);
+            $id = $result['userID'];
+            $result2 = mysql_fetch_array(mysql_query("SELECT * FROM gymuser WHERE userID = $id"));
+            return array($result, $result2);
+        } else {
+            return false;
+        }
+    }
+
     public function getExercisePlan($planID) {
         $query = "SELECT * FROM exercise WHERE planID='$planID'";
         $result = mysql_query($query);
@@ -116,12 +137,36 @@ class DB_Functions {
         return $rows;
     }
 
+    public function getDietPlan($planID) {
+        $query = "SELECT * FROM diet WHERE planID='$planID'";
+        $result = mysql_query($query);
+        $rows = array();
+        while($r = mysql_fetch_assoc($result)) {
+            $rows[] = $r;
+        }
+        return $rows;
+    }
+
     public function putHash($email) {
         //UPDATE names SET title = 'New Name' WHERE record_id = '12';
         $hash = md5(rand(0,1000));
         $result = mysql_query("UPDATE user SET hash='$hash' WHERE email='$email'");
         return $hash;
     }
+
+    public function changeEmail($email, $email2) {
+        $update = mysql_query("UPDATE user SET email='$email2' WHERE email='$email'");
+        $result = mysql_query("SELECT * FROM user WHERE email = '$email2'") or die(mysql_error());
+        $result = mysql_fetch_array($result);
+        $id = $result['userID'];
+        if($update) {
+            $result2 = mysql_fetch_array(mysql_query("SELECT * FROM gymuser WHERE userID = $id"));
+            return array($result, $result2);
+        } else {
+            return false;
+        }
+    }
+
     public function isEmailExisted($email) {
         $result = mysql_query("SELECT email from user WHERE email='$email'");
         $no_of_rows = mysql_num_rows($result);

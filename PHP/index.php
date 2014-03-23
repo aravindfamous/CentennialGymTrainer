@@ -6,7 +6,9 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
     // include db handler
     require_once 'DB_Functions.php';
     $db = new DB_Functions();
-    
+    require_once 'EmailVerification.php';
+    $ev = new EmailVerification();
+ 
     // response Array
     $response = array("tag" => $tag, "success" => 0);
  
@@ -18,7 +20,11 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
  
         // check for user
         $user = $db->getUserByUsernameAndPassword($username, $password);
-        $plan = $db->getExercisePlan($user[1]['planID']);
+        $planID = $user[1]['planID'];
+        
+        $exerciseplan = $db->getExercisePlan($planID);
+        $dietplan = $db->getDietPlan($planID);
+
         if ($user != false) {
             // echo json with success = 1
             $response["success"] = 1;
@@ -29,7 +35,9 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
             $response["user"]["verified"] = $user[0]["verified"];
             $response["user"]["currentday"] = $user[1]["currentday"];
             $response["user"]["planID"] = $user[1]["planID"];
-            $response["exercise"] = $plan;
+            $response["exercise"] = $exerciseplan;
+            $response["diet"] = $dietplan;
+
             $json = json_encode($response);
             $json = str_replace('"\u0001"', '"1"', $json);
             $json = str_replace('"\u0000"', '"0"', $json);
@@ -57,9 +65,7 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
         $password = $_POST['password'];
         $email = $_POST['email'];
 
-        require_once 'EmailVerification.php';
-        $ev = new EmailVerification();
- 
+        
         if($db->isUsernameExisted($username)) {
             $response["error_msg"] = "Username already existed";
             echo json_encode($response);
@@ -92,7 +98,43 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
         $response["exercise"] = $plan;
 
         echo json_encode($response);
-    } else {
+    } else if($tag == 'verification') {
+
+        $email = $_POST['email'];
+        $number = $_POST['number'];
+
+        if($number == '1') {
+            //send verification
+            $user = $db->getUserByEmail($email);
+            $username = $user[1]['username'];
+            $hash = $user[0]['hash'];
+            $name = $user[0]['firstname'] + " " + $user[0]['lastname'];
+            $ev->sendVerificationEmail($email, $username, $hash, $name);
+
+        } else if($number == '2') {
+            //send verification with chamged email
+            $email2 = $_POST['email2'];
+            $user = $db->changeEmail($email, $email2);
+            $email3 = $user[0]['email'];
+            $username = $user[1]['username'];
+            $hash = $user[0]['hash'];
+            $name = $user[0]['firstname'] + " " + $user[0]['lastname'];
+            $ev->sendVerificationEmail($email3, $username, $hash, $name);
+        }
+
+    } else if($tag == 'update') {
+
+        $type = $_POST['type'];
+        if($type == "currentday") {
+            $username = $_POST['username'];
+            $currentday = $_POST['currentday'];
+
+            $db->updateCurrentDay($username, $currenday);
+        }
+
+    } 
+
+    else {
         echo "Invalid Request";
     }
 } else {
