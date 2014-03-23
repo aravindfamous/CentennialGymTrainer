@@ -21,6 +21,7 @@ public class DBHandler extends SQLiteOpenHelper {
     // Login table name
     private static final String TABLE_LOGIN = "login";
     private static final String TABLE_EXERCISE = "exercise";
+    private static final String TABLE_DIET = "diet";
  
     // Login Table Columns names
     private static final String KEY_USERID = "gymuserID";
@@ -41,6 +42,13 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_NUMOFSETS = "num_of_sets";
     private static final String KEY_DAY = "day";
     private static final String KEY_WORKOUTVIDEO = "workout_video";
+    
+    //Diet Plan Table Column Names
+    private static final String KEY_DIETID = "dietID";
+    private static final String KEY_DIETINFO = "diet_info";
+    private static final String KEY_SIZE = "size";
+    private static final String KEY_DAYOFWEEK = "day_of_week";
+    private static final String KEY_TIMEOFMEAL = "time_of_meal";
  
     public DBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -71,8 +79,17 @@ public class DBHandler extends SQLiteOpenHelper {
         		+ KEY_WORKOUTVIDEO + " TEXT"
         		+ ")";
         
+        String CREATE_DIET_TABLE = "CREATE TABLE " + TABLE_DIET + "("
+        		+ KEY_DIETID + " INTEGER PRIMARY KEY,"
+        		+ KEY_DIETINFO + " TEXT,"
+        		+ KEY_SIZE + " TEXT,"
+        		+ KEY_DAYOFWEEK + " TEXT,"
+        		+ KEY_TIMEOFMEAL + " TEXT"
+        		+ ")";
+        
         db.execSQL(CREATE_LOGIN_TABLE);
         db.execSQL(CREATE_EXERCISE_TABLE);
+        db.execSQL(CREATE_DIET_TABLE);
     }
  
     // Upgrading database
@@ -81,6 +98,7 @@ public class DBHandler extends SQLiteOpenHelper {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOGIN);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXERCISE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_DIET);
         // Create tables again
         onCreate(db);
     }
@@ -119,6 +137,20 @@ public class DBHandler extends SQLiteOpenHelper {
  
         // Inserting Row
         db.insert(TABLE_EXERCISE, null, values);
+        db.close();
+    }
+    
+    public void addDietPlan(String dietInfo, String size, String dayOfWeek, String timeOfMeal) {
+    	SQLiteDatabase db = this.getWritableDatabase();
+   	 
+        ContentValues values = new ContentValues();
+        values.put(KEY_DIETINFO, dietInfo); // Name
+        values.put(KEY_SIZE, size);
+        values.put(KEY_DAYOFWEEK, dayOfWeek);
+        values.put(KEY_TIMEOFMEAL, timeOfMeal);
+        
+     // Inserting Row
+        db.insert(TABLE_DIET, null, values);
         db.close();
     }
     /**

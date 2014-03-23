@@ -1,0 +1,204 @@
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Whole Eggs', '3', 'Monday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Egg Whites(Scrambled)', '3', 'Monday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Cooked Oats ', '2 cups with 1 tbsp Honey', 'Monday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Banana', '1', 'Monday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Vitalstrength Pro-Muscle', '3 scoops mixed with 300ml milk', 'Monday', 'Breakfast');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Berries (Strawberries, Blueberries, RaspBerries)', '1 cup', 'Monday', 'Snack 1');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Low-fat Cottage Cheese', '2 cups', 'Monday', 'Snack 1');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Cooked Brown Rice', '2 cups', 'Monday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Cooked Chicken Breast', '300g', 'Monday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Green Veggies', '1 cup', 'Monday', 'Lunch');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Vitalstrength Pro-Muscle', '3 scoops mixed with 300ml milk', 'Monday', 'Snack 2');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Salmon steak', '200g', 'Monday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Couscous', '2 cups', 'Monday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Spinach', '2 cups', 'Monday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Balsamic Dressing', '1 tbsp', 'Monday', 'Dinner');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Low-fat Greek Yoghurt', '1 cup', 'Monday', 'Supper');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Flaxseeds', '1 tbsp', 'Monday', 'Supper');
+
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Poached Eggs', '2', 'Tuesday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Multrigrain Toast', '2 slices', 'Tuesday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Natural Peanut Butter', '1 tbsp', 'Tuesday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Oats', '1 1/2 cup', 'Tuesday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Vitalstrength Pro-Muscle', '3 scoops with 300ml milk', 'Tuesday', 'Breakfast');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Low-Fat Greek Yoghurt', '1 cup', 'Tuesday', 'Snack 1');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Honey', '1 tbsp', 'Tuesday', 'Snack 1');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Banana', '1', 'Tuesday', 'Snack 1');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Steak', '200g', 'Tuesday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Chickpeas', '1 cup', 'Tuesday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Tomato (diced)', '1', 'Tuesday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Cucumber (diced)', '1/2', 'Tuesday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Apple', '1', 'Tuesday', 'Lunch');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Vitalstrength Pro-Muscle', '3 scoops mixed with 300ml milk', 'Tuesday', 'Snack 2');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Chicked Breast', '200g', 'Tuesday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Carrots', '2 med', 'Tuesday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Sweet Potato', '1', 'Tuesday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Green Veggies', '1 cup', 'Tuesday', 'Dinner');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Low-Fat Cottage Cheese', '2 cups', 'Tuesday', 'Supper');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Shredded Coconut', '2 tbsp', 'Tuesday', 'Supper');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Sugar Free Syrup', '1 tsp', 'Tuesday', 'Supper');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Blend all in Breakfast List on Wednesday', '', 'Wednesday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Oats', '1 cup', 'Wednesday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Flaxseed Oil', '1 tbsp', 'Wednesday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Milk', '1 cup', 'Wednesday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Vitalstrength Pro-Muscle', '3 scoops', 'Wednesday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Honey', '1 tsp', 'Wednesday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Berries', '1 cup', 'Wednesday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Banana', '1', 'Wednesday', 'Breakfast');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Chicken/Turkey Sandwich with', '1', 'Wednesday', 'Snack 1');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Lettuce', '', 'Wednesday', 'Snack 1');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Tomato', '1', 'Wednesday', 'Snack 1');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Cheese', '1 slice', 'Wednesday', 'Snack 1');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Low-Fat Mayo', '', 'Wednesday', 'Snack 1');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Pasta with Tomato based', '1/2 cups', 'Wednesday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Mixed Veggies', '1/2 cups', 'Wednesday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Low-Fat Cheese', '1 slice', 'Wednesday', 'Lunch');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Vitalstrength Pro-Muscle', '3 scoops mixed with 300ml milk', 'Wednesday', 'Snack 2');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Trip Pork', '200g', 'Wednesday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Stir-Fried Veggies', '1 cup', 'Wednesday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Brown Rice', '1 1/2 cup', 'Wednesday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Soy Sauce', '1 tbsp', 'Wednesday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Cashew Nuts', '2 tbsp', 'Wednesday', 'Dinner');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Low-Fat Greek Yoghurt', '1 cup', 'Wednesday', 'Supper');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Peanut Butter', '1 tbsp', 'Wednesday', 'Supper');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Whey Protein', '1 scoop', 'Wednesday', 'Supper');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Whole Eggs', '3', 'Thursday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Egg Whites (Scrambled)', '3', 'Thursday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Multi Grain Toast', '2 slices', 'Thursday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Extra Lean Turkey/Bacon', '4 slices', 'Thursday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Avocado', '1/4', 'Thursday', 'Breakfast');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Large Apples', '2', 'Thursday', 'Snack 1');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Peanut Butter', '2 tbsp', 'Thursday', 'Snack 1');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Baked Potato (Skin ON)', '1', 'Thursday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Tin Tuna', '1', 'Thursday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Sweet Corn', '1 cup', 'Thursday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Low-Fat Mayo', '1 tbsp', 'Thursday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Low-Fat Cheese', '1 slice', 'Thursday', 'Lunch');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Vitalstrength Pro-Muscle', '3 scoops mixed with 300ml milk', 'Thursday', 'Snack 2');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Wholemeal Burger Buns', '2', 'Thursday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Lean Steak', '200g', 'Thursday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Fried Egg', '1', 'Thursday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Beetroot', '2 slices', 'Thursday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Cheese', '1 slice', 'Thursday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Low-Fat Mayo', '1 tbsp', 'Thursday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Large Sweet Potatoes with Olive Oil', '2', 'Thursday', 'Dinner');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Tin Tuna', '1', 'Thursday', 'Supper');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Olive Oil', '1 tsp', 'Thursday', 'Supper');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Weetbix', '8', 'Friday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Vitalstrength Pro-Muscle', '3 scoops with 300ml milk', 'Friday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Banana/Berries', '1 sliced', 'Friday', 'Breakfast');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Chicken/Turkey Sandwich with', '1', 'Thursday', 'Snack 1');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Lettuce', '', 'Thursday', 'Snack 1');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Tomato', '1', 'Thursday', 'Snack 1');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Cheese', '1 slice', 'Thursday', 'Snack 1');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Low-Fat Mayo', '', 'Thursday', 'Snack 1');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Fish or Chicken', '200g', 'Friday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Large Cooked Sweet Potato', '1', 'Friday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Green Veggies', '1 cup', 'Friday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Fruit', '1', 'Friday', 'Lunch');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Vitalstrength Pro-Muscle', '3 scoops mixed with 300ml milk', 'Friday', 'Snack 2');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Pasta with Tomato based', '2 cups', 'Friday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Shredded Chicken Breast', '200g', 'Friday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Cherry', '5', 'Friday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Basil', '5', 'Friday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Mushrooms', '5', 'Friday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Feta Cheese', '1', 'Friday', 'Dinner');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Cream Milk', '1 cup', 'Friday', 'Supper');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Peanut Butter', '1 tbsp', 'Friday', 'Supper');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Egg Whites', '3', 'Saturday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Eggs (Scrambled or Omellete) ', '3', 'Saturday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Turkey/Bacon', '4 slices', 'Saturday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Spinach', '1 cup', 'Saturday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Mushrooms', '1 cup', 'Saturday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Whole Grain Bread', '2 slices', 'Saturday', 'Breakfast');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Low-Fat Greek Yoghurt', '1 cup', 'Saturday', 'Snack 1');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Honey', '2 tbsp', 'Saturday', 'Snack 1');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Roast Chicken (No Skin)', '1/2', 'Saturday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Sweet Potato', '1 cup', 'Saturday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Mixed Veggies', '1 cup', 'Saturday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Cooked Brown Rice', '1 1/2 cup', 'Saturday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Bean Mix', '210g', 'Saturday', 'Lunch');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Vitalstrength Pro-Muscle', '3 scoops mixed with 300ml milk', 'Saturday', 'Snack 2');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Grilled White Fish', '250g', 'Saturday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Sweet Potato', '1 cup', 'Saturday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Mixed Veggies', '1 cup', 'Saturday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Cooked Brown Rice', '1 1/2 cup', 'Saturday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Bean Mix', '210g', 'Saturday', 'Dinner');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Low-Fat Cheese', '1 slice', 'Saturday', 'Supper');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Raw Veggies Sticks', '1 cup', 'Saturday', 'Supper');	
+
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Muscle Mass Pancakes:', '', 'Sunday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Oats', '1 cup', 'Sunday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Egg Whites', '5', 'Sunday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Eggs', '2', 'Sunday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Cottage Cheese', '1 cup', 'Sunday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Vitalstrength Pro-Muscle', '3 scoops mixed with 300ml milk', 'Sunday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Cinnamon', 'dash', 'Sunday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Coconut Oil', '2 tbsp', 'Sunday', 'Breakfast');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Berries', '1 cup', 'Sunday', 'Breakfast');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Shredded Chicken', '100g', 'Sunday', 'Snack 1');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Wholemeal Tortilla', '1', 'Sunday', 'Snack 1');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Deli Roast Beef', '200g', 'Sunday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Wholemeal Bread', '2 slices', 'Sunday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Cheese', '1 slice', 'Sunday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Mixed Salad', '1 cup', 'Sunday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Low-Fat Mayo', '1 tbsp', 'Sunday', 'Lunch');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Fruit', '1', 'Sunday', 'Lunch');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Vitalstrength Pro-Muscle', '3 scoops mixed with 300ml milk', 'Sunday', 'Snack 2');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Roast Chicken', '1/2', 'Sunday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Baby Potatoes', '5', 'Sunday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Large Sweet Potato', '1', 'Sunday', 'Dinner');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Mixed Veggies', '1 cup', 'Sunday', 'Dinner');
+
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Low-Fat Cottage Cheese', '2 cups', 'Sunday', 'Supper');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Shredded Coconut', '2 tbsp', 'Sunday', 'Supper');
+INSERT INTO `diet` (planID, diet_info, size, day_of_week, time_of_meal) VALUES (1, 'Sugar Free Syrup', '1 tsp', 'Sunday', 'Supper');
+
+
+
+
+
+
+
+
+
