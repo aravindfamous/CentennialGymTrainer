@@ -20,6 +20,11 @@
             android:text="@string/exerciseplan"
             android:layout_below="@+id/tvHome" />  
 
+        <TextView android:id="@+id/tvDiet"
+            style="@style/behindMenuItemLabel"
+            android:text="@string/dietplan"
+            android:layout_below="@+id/tvExerciseCurrentDay" />
+        
         <Button
             android:id="@+id/btnBehindLogout"
             style="@style/behindMenuButton"
