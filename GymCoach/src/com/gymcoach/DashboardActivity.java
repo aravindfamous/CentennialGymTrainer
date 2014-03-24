@@ -1,12 +1,7 @@
 package com.gymcoach;
 
-import java.util.Calendar;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,18 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.library.BReceiver;
 import com.library.SimpleSideDrawer;
 import com.library.UserFunctions;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class DashboardActivity extends Activity {
 	UserFunctions userFunctions;
-    Button btnBehindLogout;
     Button btnGeneratePlan;
     SimpleSideDrawer nav;
-    TextView tvHome;
-    TextView tvExerciseCurrentDay;
     TextView Home;
     
 	@SuppressWarnings("deprecation")
@@ -53,9 +44,12 @@ public class DashboardActivity extends Activity {
 
         if(userFunctions.isUserLoggedIn(getApplicationContext())) {
         	setTitle(userFunctions.getName(getApplicationContext()));
+        	/*
+        	 * FutureFeature
         	if(userFunctions.getAllowed(getApplicationContext()) == 1) {
         		updateAllowed();
         	}
+        	*/
         	//if verified
         	if(userFunctions.isVerified(getApplicationContext())) {
         		//if has plan
@@ -147,11 +141,12 @@ public class DashboardActivity extends Activity {
         } 
     }
     
-    private void listeners() {
+    public void listeners() {
     	//All Set onClick listeners
-        btnBehindLogout = (Button) findViewById(R.id.btnBehindLogout);
-        tvHome = (TextView) findViewById(R.id.tvHome);
-        tvExerciseCurrentDay = (TextView) findViewById(R.id.tvExerciseCurrentDay);
+        Button btnBehindLogout = (Button) findViewById(R.id.btnBehindLogout);
+        TextView tvHome = (TextView) findViewById(R.id.tvHome);
+        TextView tvExerciseCurrentDay = (TextView) findViewById(R.id.tvExerciseCurrentDay);
+        TextView tvDiet = (TextView) findViewById(R.id.tvDiet);
 
         btnBehindLogout.setOnClickListener(new View.OnClickListener() {
         	@Override
@@ -178,13 +173,26 @@ public class DashboardActivity extends Activity {
 				public void onClick(View v) {
 					Intent exercise = new Intent(getApplicationContext(), ExerciseActivity.class);
 					exercise.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(exercise); 
+					startActivity(exercise); 
                 // Closing dashboard screen
                 finish();
 				}
 			});
+        
+        tvDiet.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent diet = new Intent(getApplicationContext(), DietActivity.class);
+				diet.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(diet); 
+            // Closing dashboard screen
+            finish();
+			}
+		});
     }
     
+    //Future Feature
+    /*
     public void updateAllowed() {
     	Calendar calendar = Calendar.getInstance();
     	// 9 AM 
@@ -200,4 +208,5 @@ public class DashboardActivity extends Activity {
         //set the alarm for particular time
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 0, PendingIntent.getBroadcast(this,1,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
     }
+    */
 }

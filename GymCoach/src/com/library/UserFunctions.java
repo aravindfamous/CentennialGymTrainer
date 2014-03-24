@@ -210,11 +210,6 @@ public class UserFunctions {
     	return Integer.parseInt(user.get("allowed"));
     }
     
-    public ArrayList<ExercisePlan> getExercisePlanByDay(Context context, int day) {
-    	DBHandler db = new DBHandler(context);
-    	return db.getExercisePlanByDay(day);
-    }
-    
     public void updateCurrentDay(Context context, int day) {
     	//Database Update
     	DBHandler db = new DBHandler(context);

@@ -30,6 +30,8 @@ import com.library.UserFunctions;
 public class ExerciseActivity extends Activity {
 
 	UserFunctions userFunctions;
+	DBHandler db;
+	
 	TextView tvCurrentDay;
 	private int currentDay;
 	
@@ -61,6 +63,8 @@ public class ExerciseActivity extends Activity {
 		setContentView(R.layout.activity_exercise);
 
 		userFunctions = new UserFunctions();
+		db = new DBHandler(getApplicationContext());
+		
 		setTitle(userFunctions.getName(getApplicationContext()));
 		currentDay = userFunctions.getCurrentDay(getApplicationContext());
 		TextView tvCurrentDay = (TextView) findViewById(R.id.tvCurrentDay);
@@ -80,11 +84,11 @@ public class ExerciseActivity extends Activity {
 	
 	private void displayListView() {
 		  
-		ArrayList<ExercisePlan> exerciseList = userFunctions.getExercisePlanByDay(getApplicationContext(), currentDay);
+		ArrayList<ExercisePlan> exerciseList = db.getExercisePlanByDay(currentDay);
 		  
 		//create an ArrayAdaptar from the String Array
 		dataAdapter = new MyCustomAdapter(this,
-		R.layout.listview_layout, exerciseList);
+		R.layout.listview_layout_exercise, exerciseList);
 		ListView listView = (ListView) findViewById(R.id.listView1);
 		// Assign adapter to ListView
 		listView.setAdapter(dataAdapter);
@@ -151,7 +155,7 @@ public class ExerciseActivity extends Activity {
 	  
 		if (convertView == null) {
 			LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			convertView = vi.inflate(R.layout.listview_layout, null); 
+			convertView = vi.inflate(R.layout.listview_layout_exercise, null); 
 			
 			//new holder
 			holder = new ViewHolder();
@@ -213,9 +217,10 @@ public class ExerciseActivity extends Activity {
 	
 	private void listeners() {
     	//All Set onClick listeners
-        btnBehindLogout = (Button) findViewById(R.id.btnBehindLogout);
-        tvHome = (TextView) findViewById(R.id.tvHome);
-        tvExerciseCurrentDay = (TextView) findViewById(R.id.tvExerciseCurrentDay);
+        Button btnBehindLogout = (Button) findViewById(R.id.btnBehindLogout);
+        TextView tvHome = (TextView) findViewById(R.id.tvHome);
+        TextView tvExerciseCurrentDay = (TextView) findViewById(R.id.tvExerciseCurrentDay);
+        TextView tvDiet = (TextView) findViewById(R.id.tvDiet);
 
         btnBehindLogout.setOnClickListener(new View.OnClickListener() {
         	@Override
@@ -244,6 +249,17 @@ public class ExerciseActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				nav.toggleLeftDrawer();	
+			}
+		});
+        
+        tvDiet.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent diet = new Intent(getApplicationContext(), DietActivity.class);
+				diet.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(diet); 
+            // Closing dashboard screen
+            finish();
 			}
 		});
     }
