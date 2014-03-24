@@ -53,9 +53,11 @@ public class DietActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_diet);
-		setTitle(userFunctions.getName(getApplicationContext()));
+		
 		
 		userFunctions = new UserFunctions();
+		
+		setTitle(userFunctions.getName(getApplicationContext()));
 		db = new DBHandler(getApplicationContext());
 		tvCurrentDay = (TextView) findViewById(R.id.tvCurrentDay);
 		
