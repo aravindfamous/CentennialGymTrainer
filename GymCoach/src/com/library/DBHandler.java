@@ -205,6 +205,28 @@ public class DBHandler extends SQLiteOpenHelper {
     	return exerciseList;
     }
     
+    public ArrayList<DietPlan> getDietPlanByDay(String day) {
+    	ArrayList<DietPlan> dietList = new ArrayList<DietPlan>();
+    	String query = "SELECT * FROM " + TABLE_DIET + " WHERE day_of_week='" + day + "'";
+    	
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	Cursor cursor = db.rawQuery(query, null);
+    	
+    	if (cursor.moveToFirst()) {
+            do {
+            	DietPlan dp = new DietPlan();
+            	dp.setDietInfo(cursor.getString(1));
+            	dp.setSize(cursor.getString(2));
+            	dp.setDayOfWeek(cursor.getString(3));
+            	dp.setTimeOfMeal(cursor.getString(4));
+                // Adding contact to list
+            	dietList.add(dp);
+            } while (cursor.moveToNext());
+        }
+    	
+    	return dietList;
+    }
+    
     /**
      * Getting user login status
      * return true if rows are there in table
