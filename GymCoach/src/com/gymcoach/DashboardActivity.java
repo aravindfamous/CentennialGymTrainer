@@ -147,7 +147,7 @@ public class DashboardActivity extends Activity {
         TextView tvHome = (TextView) findViewById(R.id.tvHome);
         TextView tvExerciseCurrentDay = (TextView) findViewById(R.id.tvExerciseCurrentDay);
         TextView tvDiet = (TextView) findViewById(R.id.tvDiet);
-
+        
         btnBehindLogout.setOnClickListener(new View.OnClickListener() {
         	@Override
             public void onClick(View arg0) {
@@ -185,6 +185,18 @@ public class DashboardActivity extends Activity {
 				Intent diet = new Intent(getApplicationContext(), DietActivity.class);
 				diet.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(diet); 
+				// Closing dashboard screen
+				finish();
+			}
+		});
+        
+        TextView tvReport = (TextView) findViewById(R.id.tvReport);
+        tvReport.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent report = new Intent(getApplicationContext(), ReportActivity.class);
+				report.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(report); 
             // Closing dashboard screen
             finish();
 			}

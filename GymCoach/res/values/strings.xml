@@ -52,7 +52,7 @@
         <item>@drawable/ic_communities</item>
         <item>@drawable/ic_pages</item>
         <item>@drawable/ic_whats_hot</item>
-    </array>
+    </array>
     -->
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
@@ -86,5 +86,10 @@
     <string name="viewvideo">| View Video</string>
     <string name="title_activity_diet">DietActivity</string>
     <string name="dietplan">Diet Plan</string>
+    <string name="title_activity_report">ReportActivity</string>
+    <string name="title_activity_try">TryActivity</string>
+    <string name="topic">Topic</string>
+    <string name="sendreport">Send Report</string>
+    <string name="report">Report</string>
 
 </resources>

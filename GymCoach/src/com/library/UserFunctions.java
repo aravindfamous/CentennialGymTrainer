@@ -22,6 +22,7 @@ public class UserFunctions {
     private static String generate_tag = "generate";
     private static String verification_tag = "verification";
     private static String update_tag = "update";
+    private static String report_tag = "report";
     
     //JSON Response node names for exercise
     private static String KEY_BODYPART = "body_part";
@@ -109,6 +110,17 @@ public class UserFunctions {
     	params.add(new BasicNameValuePair("email2", email2));
     	
     	jsonParser.getJSONFromUrl(URL, params);
+    }
+    
+    public JSONObject sendReport(String username, String topic, String question) {
+    	final List<NameValuePair> params = new ArrayList<NameValuePair>();	
+
+    	params.add(new BasicNameValuePair("tag", report_tag));
+    	params.add(new BasicNameValuePair("username", username));
+    	params.add(new BasicNameValuePair("topic", "" + topic));
+    	params.add(new BasicNameValuePair("question", question));
+    	
+    	return jsonParser.getJSONFromUrl(URL, params);
     }
     
     public void addPlan(Context context, JSONArray exercisearray, JSONArray dietarray) {

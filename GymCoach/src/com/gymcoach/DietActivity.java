@@ -182,5 +182,17 @@ public class DietActivity extends Activity {
 				nav.toggleLeftDrawer();	
 			}
 		});
+        
+        TextView tvReport = (TextView) findViewById(R.id.tvReport);
+        tvReport.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent report = new Intent(getApplicationContext(), ReportActivity.class);
+				report.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(report); 
+            // Closing dashboard screen
+            finish();
+			}
+		});
     }
 }

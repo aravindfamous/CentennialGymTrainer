@@ -55,18 +55,22 @@
             android:label="@string/title_activity_exercise" >
         </activity>
 
-        <!-- 
+        <!--
         Future Feature
         <receiver android:name="com.library.BReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
-        </receiver>
-		 -->
-		 
+        </receiver>
+        -->
+
         <activity
             android:name="com.gymcoach.DietActivity"
             android:label="@string/title_activity_diet" >
+        </activity>
+        <activity
+            android:name="com.gymcoach.ReportActivity"
+            android:label="@string/title_activity_report" >
         </activity>
     </application>
 

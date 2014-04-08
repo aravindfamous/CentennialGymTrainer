@@ -101,7 +101,7 @@ public class ExerciseActivity extends Activity {
 				
 				if(count == exerciseList.size()) {
 					
-					if(userFunctions.getAllowed(getApplicationContext()) == 0) {
+					//if(userFunctions.getAllowed(getApplicationContext()) == 0) {
 						ConnectivityManager connec = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 						
 					    if (connec != null && (connec.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTED) ||(connec.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED)){
@@ -116,9 +116,9 @@ public class ExerciseActivity extends Activity {
 					        Toast.makeText(getApplicationContext(), "You must be connected to the internet", Toast.LENGTH_LONG).show();
 					    } 
 					    
-					} else {
-						Toast.makeText(getApplicationContext(), "Not allowed today", Toast.LENGTH_SHORT).show();
-					}
+					//} else {
+					//	Toast.makeText(getApplicationContext(), "Not allowed today", Toast.LENGTH_SHORT).show();
+					//}
 					
 				} else {
 					Toast.makeText(getApplicationContext(), "Not Finished", Toast.LENGTH_SHORT).show();
@@ -258,6 +258,18 @@ public class ExerciseActivity extends Activity {
 				Intent diet = new Intent(getApplicationContext(), DietActivity.class);
 				diet.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(diet); 
+            // Closing dashboard screen
+            finish();
+			}
+		});
+        
+        TextView tvReport = (TextView) findViewById(R.id.tvReport);
+        tvReport.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent report = new Intent(getApplicationContext(), ReportActivity.class);
+				report.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(report); 
             // Closing dashboard screen
             finish();
 			}
